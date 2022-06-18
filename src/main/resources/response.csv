@@ -1,0 +1,7 @@
+Direction,Year,Date,Weekday,Country,Commodity,Transport_Mode,Measure,Value,Cumulative
+Exports,2015,05/01/2015,Monday,All,All,All,$,105000000,442000000
+Exports,2015,12/01/2015,Monday,All,All,All,$,161000000,1147000000
+Exports,2015,19/01/2015,Monday,All,All,All,$,164000000,2011000000
+Exports,2015,26/01/2015,Monday,All,All,All,$,150000000,2965000000
+Exports,2015,02/02/2015,Monday,All,All,All,$,176000000,3980000000
+Exports,2015,09/02/2015,Monday,All,All,All,$,202000000,4937000000
