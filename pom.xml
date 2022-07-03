@@ -16,8 +16,33 @@
 	<properties>
 		<java.version>14</java.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<version>2.16.60</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+
+	<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/s3 -->
+	<dependency>
+		<groupId>software.amazon.awssdk</groupId>
+		<artifactId>s3</artifactId>
+		<version>2.16.60</version>
+		<scope>test</scope>
+	</dependency>
+
+
+
+	<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
@@ -46,6 +71,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>s3</artifactId>
 		</dependency>
 	</dependencies>
 

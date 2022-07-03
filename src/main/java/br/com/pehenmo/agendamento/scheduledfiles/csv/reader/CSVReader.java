@@ -1,11 +1,15 @@
 package br.com.pehenmo.agendamento.scheduledfiles.csv.reader;
 
+import br.com.pehenmo.agendamento.scheduledfiles.aws.config.AWSS3Request;
+import br.com.pehenmo.agendamento.scheduledfiles.aws.factory.AWSS3ClientFactory;
+import br.com.pehenmo.agendamento.scheduledfiles.aws.reader.ReadBucketS3Class;
 import br.com.pehenmo.agendamento.scheduledfiles.csv.dto.FraudRequestDto;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,11 +21,24 @@ import java.util.stream.Collectors;
 @Component
 public class CSVReader {
 
+    @Autowired
+    private AWSS3ClientFactory factory;
+
+    @Autowired
+    private AWSS3Request s3Properties;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(CSVReader.class);
 
     public List<FraudRequestDto> read() {
 
-        InputStream input = getClass().getClassLoader().getResourceAsStream("target.csv");
+        //AWS - read to another csv file
+        //ReadBucketS3File.getObjectBytes(factory.generate(), s3Properties.getBucketName(), s3Properties.getKeyName(),  "C:\\Users\\pedro\\projetos\\teste.csv");
+
+        //AWS - read in memory
+        InputStream input = ReadBucketS3Class.getObject(factory.generate(), s3Properties.getBucketName(), s3Properties.getKeyName());
+
+        //Local
+        //InputStream input = getClass().getClassLoader().getResourceAsStream("target.csv");
 
         var parser = new CSVParserBuilder()
                 .withSeparator(',')
@@ -49,7 +66,7 @@ public class CSVReader {
                 return newDto;
             }).collect(Collectors.toList());
 
-            //dtoList.forEach(System.out::println);
+            dtoList.forEach(System.out::println);
 
             return dtoList;
 

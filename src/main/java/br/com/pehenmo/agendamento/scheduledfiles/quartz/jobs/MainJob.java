@@ -14,7 +14,6 @@ public class MainJob implements Job {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainJob.class);
 
-
     @Autowired
     private FraudService service;
 

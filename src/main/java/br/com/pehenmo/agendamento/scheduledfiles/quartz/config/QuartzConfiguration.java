@@ -66,11 +66,13 @@ public class QuartzConfiguration {
     public JobDetailFactoryBean jobDetail() {
 
         JobDetailFactoryBean jobDetailFactory = new JobDetailFactoryBean();
+
         jobDetailFactory.setJobClass(MainJob.class);
         jobDetailFactory.setName("JobDetailFactoryBean-"+UUID.randomUUID().toString());
         jobDetailFactory.setGroup("simpleJobGroup-frauds");
         jobDetailFactory.setDescription("Invoke Sample Job service");
         jobDetailFactory.setDurability(true);
+
         return jobDetailFactory;
     }
 
